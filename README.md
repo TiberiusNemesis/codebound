@@ -1,6 +1,6 @@
 # Codebound
 
-![[codebound.png]]
+![codebound-header](/Assets/codebound.png)
 
 Welcome to *Codebound*, a repository where I document my journey through the realms of software engineering and computer science.
 ## Overview
