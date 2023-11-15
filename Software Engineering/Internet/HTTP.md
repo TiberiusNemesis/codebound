@@ -35,3 +35,9 @@ It does this through encryption, most often through TLS (often called SSL/TLS). 
 3. The client responds with a pre-master (or client) key which is encrypted with the server's public key and sends it back.
 4. They both generate a 'shared secret' that can be used as a symmetric key, and a test is sent from both sides.
 5. Finally, after a successful test, connection is now secured.
+
+### Sources
+
+[Everything you need to know about HTTP](https://cs.fyi/guide/http-in-depth) 
+[What is HTTP?](https://www.cloudflare.com/en-gb/learning/ddos/glossary/hypertext-transfer-protocol-http/)
+[HTTP/1 to HTTP/2 to HTTP/3](https://www.youtube.com/watch?v=a-sBfyiXysI)

@@ -33,7 +33,11 @@ If the [DNS](Software%20Engineering/Internet/DNS.md) server is having issues res
 Also known as the Layers model. 
 This defines the different layers in which networking functions operate.
 
-![[osi-model.png]]
+![OSI Model](/Assets/osi-model.png)
 
-##### Relevant material:
+### Sources:
 [Cloudfare OSI documentation](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/)
+
+[How does the internet work?](https://cs.fyi/guide/how-does-internet-work)
+
+[The Internet Explained](https://www.vox.com/2014/6/16/18076282/the-internet)
