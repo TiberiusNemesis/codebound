@@ -1,6 +1,6 @@
 # Domain Name
 A domain name is a unique, easy-to-remember address used to access websites, such as ‘google.com’, and ‘facebook.com’.  
-Users can connect to websites using domain names due to the DNS system, which transforms the domain name into an IP address.
+Users can connect to websites using domain names due to the [DNS](Software%20Engineering/Internet/DNS.md) system, which transforms the domain name into an IP address.
 
 ### Sources
 
