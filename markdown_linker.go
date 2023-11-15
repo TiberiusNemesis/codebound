@@ -11,6 +11,7 @@ import (
 )
 
 // getFileList recursively gets all markdown files from the root directory.
+// It ignores files in the Unsorted folder.
 func getFileList(root string) ([]string, error) {
 	var files []string
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
@@ -33,7 +34,8 @@ func sanitizePath(path string) string {
 	return strings.ReplaceAll(path, " ", "%20")
 }
 
-// updateLinks reads a file and replaces bare words that match file names with Markdown links.
+// updateLinks reads a file and replaces bare words that match file names with Markdown links to those files.
+// It will not link to the current file.
 func updateLinks(filePath string, fileNames map[string]string, logFile *os.File) (int, error) {
 	file, err := os.Open(filePath)
 	if err != nil {
@@ -102,9 +104,9 @@ func main() {
 	}
 	defer logFile.Close()
 
-	root := "./" // Set the root directory of your Obsidian vault
+	root := "./" // You can set this to the root directory of your Obsidian vault
 
-	// Get a list of all markdown files
+	// Get a list of all markdown files 
 	files, err := getFileList(root)
 	if err != nil {
 		panic(err)
