@@ -1,18 +1,22 @@
 # What is HTTP?
 
-HTTP (aka Hypertext Transfer Protocol) is an application-layer protocol for communicating over a network. It became the main communication protocol for the internet ever since its introduction in the early 90s. While it was originally supposed to carry only text (hence the name hypertext), it was quickly upgraded and now other forms of media, such as images or videos, were able to be transmitted through HTTP. So technically, the correct name would be Hypermedia Transfer Protocol. HMTP. 
+HTTP (aka Hypertext Transfer Protocol) is an application-layer protocol for communicating over a network. It became the main communication protocol for the [internet](Software%20Engineering/Internet/internet.md) ever since its introduction in the early 90s. While it was originally supposed to carry only text (hence the name hypertext), it was quickly upgraded and now other forms of media, such as images or videos, were able to be transmitted through HTTP. So technically, the correct name would be Hypermedia Transfer Protocol. HMTP. 
 
 Doesn't quite roll off the tongue, does it?
 
 ## HTTP 1.x vs HTTP 2
 
-HTTP 1.0 had just a GET method. It was pretty barebones and just retrieved HTML.
+HTTP 0.9 had a single method: GET. It was pretty barebones as it just retrieved information from a server.
 
-HTTP 1.1 added several methods, including POST, PUT, HEAD and DELETE. It added status codes and headers, as well as 
+HTTP 1.0 improved upon it quite a bit, adding several methods such as POST and HEAD, status codes and headers, as well as Content-Type, allowing for more than just text in a HTML file to be transmitted.
+
+HTTP 1.1 added many more methods, such as PUT, PATCH and DELETE, while also allowing connections to be persistent -- i.e. the client and the server did not have to open a new connection for every single request/response.
 
 HTTP 2.0 introduces several new concepts such as streams and push promises. 
 
-Streams are a way of distributing data in a way that is more efficient than previous ones -- they are bidirectional channels that can carry any number of messages. Within these streams, the messages are formed of the smallest data unit called _frames._ A logical HTTP message, such as a request and a response, is made up of multiple frames. 
+Streams are a way of distributing data in a way that is more efficient than previous ones -- they are bidirectional channels that can carry any number of messages.  
+Within these streams, the messages are formed by smaller data units, called _frames._  
+A logical HTTP message, such as a request and a response, is made up of multiple frames. 
 
 Push promises are basically a server's way of efficiently telling the client that they should not make additional requests for some content because they are _promised_ to be delivered that content.
 

@@ -17,15 +17,15 @@ Each device has a specific address to identify it --- it's called the IP address
 An example IP address would look like 192.168.0.1. An example IP along with the port number would look something like 192.168.0.1:8080.
 
 Websites are nothing more than public IP addresses, hosted by computers (called web servers), that can be accessed by other computers freely. For example, Google's address could be 721.111.42.11. Upon entering that into a web browser, you would be redirected to Google.
-However, IP numbers are often considered difficult to remember, and they may change with time. That's where the Domain Name System (DNS) comes into play.
+However, IP numbers are often considered difficult to remember, and they may change with time. That's where the Domain Name System ([DNS](Software%20Engineering/Internet/DNS.md)) comes into play.
 
-## DNS
+## [DNS](Software%20Engineering/Internet/DNS.md)
 
-A domain name is nothing more than a human-readable address which, when entered into a web browser, makes a request to a specific kind of server from your ISP that finds the equivalent IP address associated with that domain name. This is known as the Domain Name System, or DNS.
+A [domain name](Software%20Engineering/Internet/domain%20name.md) is nothing more than a human-readable address which, when entered into a web browser, makes a request to a specific kind of server from your ISP that finds the equivalent IP address associated with that [domain name](Software%20Engineering/Internet/domain%20name.md). This is known as the Domain Name System, or [DNS](Software%20Engineering/Internet/DNS.md).
 
-Thus, using DNS, people do not have to remember the IP addresses of websites they'd like to visit -- that is the DNS server's job. 
+Thus, using [DNS](Software%20Engineering/Internet/DNS.md), people do not have to remember the IP addresses of websites they'd like to visit -- that is the [DNS](Software%20Engineering/Internet/DNS.md) server's job. 
 
-If the DNS server is having issues responding to your computer, technically you could insert the IP address of the website you're looking for, and you would be able to access it in that way.
+If the [DNS](Software%20Engineering/Internet/DNS.md) server is having issues responding to your computer, technically you could insert the IP address of the website you're looking for, and you would be able to access it in that way.
 (In reality, it's not that simple. But in theory, sure!)
 
 ## Open Systems Interconnection 
