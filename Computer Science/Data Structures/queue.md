@@ -1,5 +1,5 @@
 # Queue
-A data structure where the elements stored are inserted and deleted in a particular order, following the first in, first out (or FIFO) principle, *i.e.* the first element to be inserted is the first element to be removed. 
+A [data structure](Computer%20Science/Data%20Structures/data%20structure.md) where the elements stored are inserted and deleted in a particular order, following the first in, first out (or FIFO) principle, *i.e.* the first element to be inserted is the first element to be removed. 
 
 They are very useful whenever:
 - a strict order of processing elements is required (such as task scheduling, breadth-first search, handling requests in a web server)

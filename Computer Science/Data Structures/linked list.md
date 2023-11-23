@@ -1,8 +1,8 @@
 # Linked List
-A data structure which is made up of **nodes.**  
+A [data structure](Computer%20Science/Data%20Structures/data%20structure.md) which is made up of **nodes.**  
 Each node consists of two elements: the data (or value), and a pointer to the address of another node in the list. 
 
-This relationship allows us to form a list of elements where, unlike an array, the elements do not need to be sequential in the computer's memory.
+This relationship allows us to form a list of elements where, unlike an [array](Computer%20Science/Data%20Structures/array.md), the elements do not need to be sequential in the computer's memory.
 
 They are very useful whenever:
 - the total number of elements is unknown in advance
@@ -22,7 +22,7 @@ Inserting an element into a linked list is at most O(1) complexity because the e
 
 Transversing a linked list and accessing one of its elements, however, is (at worst) O(n) complexity since when starting from the head (or tail) of the list, it is necessary to follow the pointer references to each next element until we get to the ones we are looking to displace.
 
-*(The summary below refers to doubly linked lists.)*
+*The summary below refers to doubly linked lists.*
 ### Worst-case 
 - Access: O(n)
 - Search: O(n)

@@ -1,5 +1,5 @@
 # Array
-A data structure which represents a fixed amount of elements that are stored sequentially in memory. Elements must have the same type in a single array, *i.e.* we can have an array which stores only numbers, or only characters, or only boolean values, and so on.
+A [data structure](Computer%20Science/Data%20Structures/data%20structure.md) which represents a fixed amount of elements that are stored sequentially in memory. Elements must have the same type in a single array, *i.e.* we can have an array which stores only numbers, or only characters, or only boolean values, and so on.
 
 Example of an array with five elements: 
 ```python
