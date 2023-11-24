@@ -32,6 +32,8 @@ value(parent) >= value(child)
 ```
 
 Inserting into a max heap again requires the comparison of the inserted node with the parent nodes, but in this case, if the inserted node is greater than the nodes above, then it is swapped. The operation again continues until the inserted node is at the root or has a parent with a value larger than itself.
+
+In deletion, the largest value (i.e. the root node) is removed and the last node (from top to bottom, left to right) is moved to the root. The sorting then occurs normally, as if the element was inserted in the top. The largest numbers will bubble up and the element will end up in a position where it is either a leaf node, or it is greater than its child nodes.
 ## Time Complexity
 ### Worst-case: 
 This applies to both max and min heaps:
