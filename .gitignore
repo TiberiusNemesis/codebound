@@ -3,3 +3,5 @@
 .obsidian
 updates.log
 .vscode/
+node_modules/
+coverage/
