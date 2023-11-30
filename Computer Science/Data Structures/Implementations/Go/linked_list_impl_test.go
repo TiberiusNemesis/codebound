@@ -96,8 +96,32 @@ func TestLinkedList_ReplaceNode(t *testing.T) {
 	}
 }
 
-func TestLinkedList_AddNode(t *testing.T) {
-	// TODO: Write test cases for the addNode method
+func TestLinkedList_AddNode_AtHead(t *testing.T) {
+	list := LinkedList{}
+	firstNode := &ListNode{data: "use"}
+	secondNode := &ListNode{data: "the"}
+	thirdNode := &ListNode{data: "force"}
+	list.appendNode(firstNode)
+	list.appendNode(secondNode)	
+	list.appendNode(thirdNode)
+
+	
+	// We add a node at index 0 (the head)
+	newNode := &ListNode{data: "just"}
+
+	err := list.addNode(0, newNode)
+	if err != nil {
+		t.Errorf("Error occurred while adding node: %v", err)
+	}
+
+	// Then verify that the it was added at the correct index
+	node, err := list.getNode(0)
+	if err != nil {
+		t.Errorf("Error occurred while getting the added node: %v", err)
+	}
+	if node != newNode {
+		t.Errorf("Expected added node to be %v, but was %v", secondNode, node)
+	}
 }
 
 func TestLinkedList_AppendNode(t *testing.T) {
