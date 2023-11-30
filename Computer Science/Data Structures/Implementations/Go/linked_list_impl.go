@@ -62,6 +62,22 @@ func (node *ListNode) getNextNode() (*ListNode, error) {
 	return nil, errors.New("No next node available.")
 }
 
+// Helper method(s?)
+
+// Links two nodes together, given their previous and next nodes.
+func linkNodes(previousNode, newNode, nextNode *ListNode) {
+	if previousNode != nil {
+		previousNode.nextPointer = newNode
+	}
+
+	if nextNode != nil {
+		nextNode.previousPointer = newNode
+	}
+
+	newNode.previousPointer = previousNode
+	newNode.nextPointer = nextNode
+}
+
 // Linked List methods implemented
 
 // Gets the node from a list based on a given index.
@@ -126,10 +142,7 @@ func (list *LinkedList) replaceNode(index int, newNode *ListNode) error {
 		return fmt.Errorf("Error removing node from linked list: no next node available")
 	}
 
-	previousNode.nextPointer = newNode
-	newNode.previousPointer = previousNode
-	newNode.nextPointer = nextNode
-	nextNode.previousPointer = newNode
+	linkNodes(previousNode, newNode, nextNode)
 	return nil
 }
 
@@ -139,7 +152,8 @@ func (list *LinkedList) addNode(index int, newNode *ListNode) error {
 	if index < 0 {
 		return errors.New("Index must be greater than or equal to 0.")
 	}
-
+	
+	// if the index is 0, we're adding the node at the head of the list
 	if index == 0 {
 		newNode.nextPointer = list.head
 		if list.head != nil {
@@ -156,15 +170,11 @@ func (list *LinkedList) addNode(index int, newNode *ListNode) error {
 	if err != nil {
 		return err
 	}
+	// else, we're adding the node somewhere in the middle or at the end of the list
+	linkNodes(previousNode, newNode, previousNode.nextPointer)
 
-	nextNode := previousNode.nextPointer
-
-	previousNode.nextPointer = newNode
-	newNode.previousPointer = previousNode
-	newNode.nextPointer = nextNode
-	if nextNode != nil {
-		nextNode.previousPointer = newNode
-	} else {
+	// If it was at the end, we update the tail
+	if previousNode.nextPointer == nil {
 		list.tail = newNode
 	}
 
@@ -173,8 +183,7 @@ func (list *LinkedList) addNode(index int, newNode *ListNode) error {
 
 func (list *LinkedList) appendNode(newNode *ListNode) {
 	if list.tail != nil {
-		list.tail.nextPointer = newNode
-		newNode.previousPointer = list.tail
+		linkNodes(list.tail, newNode, nil)
 		list.tail = newNode
 	} else {
 		list.head = newNode
