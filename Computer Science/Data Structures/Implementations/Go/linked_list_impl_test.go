@@ -140,7 +140,32 @@ func TestLinkedList_AppendNode(t *testing.T) {
 }
 
 func TestListNode_GetData(t *testing.T) {
-	// TODO: Write test cases for the getData method
+	node := &ListNode{data: "I am the senate"}
+
+	data, err := node.getData()
+
+	if err != nil {
+		t.Errorf("Error occurred while getting data: %v", err)
+	}
+
+	expectedData := "I am the senate"
+	if data != expectedData {
+		t.Errorf("Expected data to be %v, but got %v", expectedData, data)
+	}
+}
+
+func TestListNode_GetData_NodeIsEmpty(t *testing.T) {
+	node := &ListNode{} // Create an empty node
+
+	data, err := node.getData()
+
+	if err == nil {
+		t.Errorf("Expected error to occur, but got nil")
+	}
+
+	if data != nil {
+		t.Errorf("Expected data to be nil, but was %v", data)
+	}
 }
 
 func TestListNode_GetPreviousNode(t *testing.T) {
