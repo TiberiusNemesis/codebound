@@ -49,7 +49,25 @@ func TestLinkedList_GetNode(t *testing.T) {
 }
 
 func TestLinkedList_RemoveNode(t *testing.T) {
-	// TODO: Write test cases for the removeNode method
+	list := LinkedList{}
+	firstNode := &ListNode{data: "use"}
+	secondNode := &ListNode{data: "the"}
+	thirdNode := &ListNode{data: "force"}
+	list.appendNode(firstNode)
+	list.appendNode(secondNode)
+	list.appendNode(thirdNode)
+
+	// We remove the second node 
+	err := list.removeNode(secondNode)
+	if err != nil {
+		t.Errorf("Error occurred while removing node: %v", err)
+	}
+
+	// Then verify that the list no longer has 3 indexes
+	_, err = list.getNode(2)
+	if err == nil {
+		t.Error("Expected an error after removing when trying to get node at index 2, but no error was thrown")
+	}
 }
 
 func TestLinkedList_ReplaceNode(t *testing.T) {
