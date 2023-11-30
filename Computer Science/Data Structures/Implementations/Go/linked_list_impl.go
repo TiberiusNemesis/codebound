@@ -1,19 +1,19 @@
 package data_structures_impl
 
 import (
-	"fmt"
 	"errors"
+	"fmt"
 )
 
 // Represents a node object from a doubly linked list, with pointers to previous and next ListNode elements.
 // ListNode can contain any type of data.
 type ListNode struct {
-	data              interface{}
+	data            interface{}
 	nextPointer     *ListNode
 	previousPointer *ListNode
 }
 
-// Represents a linked list data structure. 
+// Represents a linked list data structure.
 // Provides a head and a tail node to be used as reference of where the list begins and ends.
 type LinkedList struct {
 	head *ListNode
@@ -27,7 +27,7 @@ type ListNoder interface {
 	getNextNode() (*ListNode, error)
 }
 
-// Aggregates methods used by Linked List objects. 
+// Aggregates methods used by Linked List objects.
 type LinkedLister interface {
 	getNode(index int) (*ListNode, error)
 	removeNode(node *ListNode) error
@@ -46,7 +46,7 @@ func (node *ListNode) getData() (interface{}, error) {
 	return nil, errors.New("Node is empty.")
 }
 
-// Getter for the previous node. 
+// Getter for the previous node.
 func (node *ListNode) getPreviousNode() (*ListNode, error) {
 	if node.previousPointer != nil {
 		return node.previousPointer, nil
@@ -126,6 +126,7 @@ func (list *LinkedList) removeNode(node *ListNode) error {
 	return nil
 }
 
+// Replaces a node in the list with a new one.
 func (list *LinkedList) replaceNode(index int, newNode *ListNode) error {
 	nodeToReplace, err := list.getNode(index)
 	if err != nil {
@@ -135,8 +136,8 @@ func (list *LinkedList) replaceNode(index int, newNode *ListNode) error {
 	previousNode := nodeToReplace.previousPointer
 	if previousNode == nil {
 		return fmt.Errorf("Error removing node from linked list: no previous node available")
-	}	
-	
+	}
+
 	nextNode := nodeToReplace.nextPointer
 	if nextNode == nil {
 		return fmt.Errorf("Error removing node from linked list: no next node available")
@@ -152,7 +153,7 @@ func (list *LinkedList) addNode(index int, newNode *ListNode) error {
 	if index < 0 {
 		return errors.New("Index must be greater than or equal to 0.")
 	}
-	
+
 	// if the index is 0, we're adding the node at the head of the list
 	if index == 0 {
 		newNode.nextPointer = list.head
@@ -170,6 +171,7 @@ func (list *LinkedList) addNode(index int, newNode *ListNode) error {
 	if err != nil {
 		return err
 	}
+	
 	// else, we're adding the node somewhere in the middle or at the end of the list
 	linkNodes(previousNode, newNode, previousNode.nextPointer)
 
@@ -181,6 +183,7 @@ func (list *LinkedList) addNode(index int, newNode *ListNode) error {
 	return nil
 }
 
+// Adds a new node to the end of the list.
 func (list *LinkedList) appendNode(newNode *ListNode) {
 	if list.tail != nil {
 		linkNodes(list.tail, newNode, nil)
