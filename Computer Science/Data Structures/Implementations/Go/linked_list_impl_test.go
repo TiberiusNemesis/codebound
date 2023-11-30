@@ -48,6 +48,42 @@ func TestLinkedList_GetNode(t *testing.T) {
 	}
 }
 
+func TestLinkedList_GetNode_InvalidIndex(t *testing.T) {
+	list := LinkedList{}
+	firstNode := &ListNode{data: "use"}
+	secondNode := &ListNode{data: "the"}
+	thirdNode := &ListNode{data: "force"}
+	list.appendNode(firstNode)
+	list.appendNode(secondNode)
+	list.appendNode(thirdNode)
+
+	// Test to get node at an invalid index
+	_, err := list.getNode(3)
+	if err == nil {
+		t.Error("Expected error when getting node at index 3, but no error was thrown")
+	}
+}
+
+func TestLinkedList_GetNode_EmptyList(t *testing.T) {
+	list := LinkedList{}
+
+	// Test to get node at an invalid index
+	_, err := list.getNode(0)
+	if err == nil {
+		t.Error("Expected error when getting node at index 0, but no error was thrown")
+	}
+}
+
+func TestLinkedList_GetNode_IndexLowerThanZero(t *testing.T) {
+	list := LinkedList{}
+
+	// Test to get node at an index below zero
+	_, err := list.getNode(-1)
+	if err == nil {
+		t.Error("Expected error when getting node at index -1, but no error was thrown")
+	}
+}
+
 func TestLinkedList_RemoveNode(t *testing.T) {
 	list := LinkedList{}
 	firstNode := &ListNode{data: "use"}
