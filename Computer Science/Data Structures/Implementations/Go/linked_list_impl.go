@@ -77,16 +77,16 @@ func (list *LinkedList) getNode(index int) (*ListNode, error) {
 	return nil, errors.New("Index must be greater than or equal to 0.")
 }
 
-// Removes a node from a list,
+// Removes a node from the list.
 func (list *LinkedList) removeNode(node *ListNode) error {
-	previousNode, previousNodeErr := node.getPreviousNode()
-	if previousNodeErr != nil {
-		return fmt.Errorf("Error removing node from linked list: %v", previousNodeErr)
+	previousNode := node.previousPointer
+	if previousNode == nil {
+		return fmt.Errorf("Error removing node from linked list: no previous node available")
 	}	
 	
-	nextNode, nextNodeErr := node.getNextNode()
-	if nextNodeErr != nil {
-		return fmt.Errorf("Error removing node from linked list: %v", nextNodeErr)
+	nextNode := node.nextPointer
+	if nextNode == nil {
+		return fmt.Errorf("Error removing node from linked list: no next node available")
 	}
 
 	previousNode.nextPointer = nextNode
@@ -100,14 +100,14 @@ func (list *LinkedList) replaceNode(index int, newNode *ListNode) error {
 		return err
 	}
 
-	previousNode, previousNodeErr := nodeToReplace.getPreviousNode()
-	if previousNodeErr != nil {
-		return fmt.Errorf("Error removing node from linked list: %v", previousNodeErr)
+	previousNode := nodeToReplace.previousPointer
+	if previousNode == nil {
+		return fmt.Errorf("Error removing node from linked list: no previous node available")
 	}	
 	
-	nextNode, nextNodeErr := nodeToReplace.getNextNode()
-	if nextNodeErr != nil {
-		return fmt.Errorf("Error removing node from linked list: %v", nextNodeErr)
+	nextNode := nodeToReplace.nextPointer
+	if nextNode == nil {
+		return fmt.Errorf("Error removing node from linked list: no next node available")
 	}
 
 	previousNode.nextPointer = newNode
