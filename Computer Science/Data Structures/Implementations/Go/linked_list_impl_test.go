@@ -106,6 +106,64 @@ func TestLinkedList_RemoveNode(t *testing.T) {
 	}
 }
 
+func TestLinkedList_RemoveNode_OnlyNode(t *testing.T) {
+	list := LinkedList{}
+	firstNode := &ListNode{data: "use"}
+	list.appendNode(firstNode)
+
+	// We remove the first node
+	err := list.removeNode(firstNode)
+	if err != nil {
+		t.Errorf("Error occurred while removing node: %v", err)
+	}
+
+	// Then we verify that the list no longer has 3 indexes
+	_, err = list.getNode(0)
+	if err == nil {
+		t.Error("Expected an error after removing when trying to get node at index 0, but no error was thrown")
+	}
+}
+
+func TestLinkedList_RemoveNode_Head(t *testing.T) {
+	list := LinkedList{}
+	firstNode := &ListNode{data: "use"}
+	secondNode := &ListNode{data: "the"}
+	list.appendNode(firstNode)
+	list.appendNode(secondNode)
+
+	// We remove the first node
+	err := list.removeNode(firstNode)
+	if err != nil {
+		t.Errorf("Error occurred while removing head node: %v", err)
+	}
+
+	// Then we verify that the list no longer has 3 indexes
+	_, err = list.getNode(2)
+	if err == nil {
+		t.Error("Expected an error after removing when trying to get node at index 2, but no error was thrown")
+	}
+}
+
+func TestLinkedList_RemoveNode_Tail(t *testing.T) {
+	list := LinkedList{}
+	firstNode := &ListNode{data: "use"}
+	secondNode := &ListNode{data: "the"}
+	list.appendNode(firstNode)
+	list.appendNode(secondNode)
+
+	// We remove the second node
+	err := list.removeNode(secondNode)
+	if err != nil {
+		t.Errorf("Error occurred while removing node: %v", err)
+	}
+
+	// Then we verify that the list no longer has 3 indexes
+	_, err = list.getNode(1)
+	if err == nil {
+		t.Error("Expected an error after removing when trying to get node at index 1, but no error was thrown")
+	}
+}
+
 func TestLinkedList_ReplaceNode(t *testing.T) {
 	list := LinkedList{}
 	firstNode := &ListNode{data: "use"}
