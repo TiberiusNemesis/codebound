@@ -87,17 +87,26 @@ func (list *LinkedList) getNode(index int) (*ListNode, error) {
 // Removes a node from the list.
 func (list *LinkedList) removeNode(node *ListNode) error {
 	previousNode := node.previousPointer
-	if previousNode == nil {
-		return fmt.Errorf("Error removing node from linked list: no previous node available")
-	}	
-	
 	nextNode := node.nextPointer
-	if nextNode == nil {
-		return fmt.Errorf("Error removing node from linked list: no next node available")
+
+	if previousNode == nil && nextNode == nil {
+		// In this case, the node is the only one in the list
+		list.head = nil
+		list.tail = nil
+	} else if previousNode == nil {
+		// Here, our node is the head of the list
+		nextNode.previousPointer = nil
+		list.head = nextNode
+	} else if nextNode == nil {
+		// In this one, it's the tail
+		previousNode.nextPointer = nil
+		list.tail = previousNode
+	} else {
+		// And if the node is somewhere in the middle
+		previousNode.nextPointer = nextNode
+		nextNode.previousPointer = previousNode
 	}
 
-	previousNode.nextPointer = nextNode
-	nextNode.previousPointer = previousNode
 	return nil
 }
 
