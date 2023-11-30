@@ -135,7 +135,17 @@ func (list *LinkedList) replaceNode(index int, newNode *ListNode) error {
 
 	previousNode := nodeToReplace.previousPointer
 	if previousNode == nil {
-		return fmt.Errorf("Error removing node from linked list: no previous node available")
+		// In this case, the node is probably the head of the list
+		if nodeToReplace.nextPointer == nil {
+			// If it's the only node, then it's also the new tail
+			list.tail = newNode
+		}
+		// Otherwise, we just replace it and update the head
+		list.head = newNode
+		return nil
+	} else {
+		// If it's not the head, we just link the previous node to the new one
+		previousNode.nextPointer = newNode
 	}
 
 	nextNode := nodeToReplace.nextPointer
