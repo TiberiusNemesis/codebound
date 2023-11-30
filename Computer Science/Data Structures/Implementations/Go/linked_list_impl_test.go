@@ -71,7 +71,29 @@ func TestLinkedList_RemoveNode(t *testing.T) {
 }
 
 func TestLinkedList_ReplaceNode(t *testing.T) {
-	// TODO: Write test cases for the replaceNode method
+	list := LinkedList{}
+	firstNode := &ListNode{data: "use"}
+	secondNode := &ListNode{data: "the"}
+	thirdNode := &ListNode{data: "force"}
+	list.appendNode(firstNode)
+	list.appendNode(secondNode)
+	list.appendNode(thirdNode)
+
+	// We replace the second node with a new one
+	newNode := &ListNode{data: "dark side"}
+	err := list.replaceNode(1, newNode)
+	if err != nil {
+		t.Errorf("Error occurred while replacing node: %v", err)
+	}
+
+	// Then we verify that the second node really has been replaced
+	replacedNode, err := list.getNode(1)
+	if err != nil {
+		t.Errorf("Error occurred while getting the replaced node: %v", err)
+	}
+	if replacedNode != newNode {
+		t.Errorf("Expected replaced node to be %v, but was %v", newNode, replacedNode)
+	}
 }
 
 func TestLinkedList_AddNode(t *testing.T) {
