@@ -43,7 +43,7 @@ func (node *ListNode) getData() (interface{}, error) {
 	if node.data != nil {
 		return node.data, nil
 	}
-	return nil, errors.New("Node is empty.")
+	return nil, errors.New("node is empty")
 }
 
 // Getter for the previous node.
@@ -51,7 +51,7 @@ func (node *ListNode) getPreviousNode() (*ListNode, error) {
 	if node.previousPointer != nil {
 		return node.previousPointer, nil
 	}
-	return nil, errors.New("No previous node available.")
+	return nil, errors.New("no previous node available")
 }
 
 // Getter for the next node.
@@ -59,7 +59,7 @@ func (node *ListNode) getNextNode() (*ListNode, error) {
 	if node.nextPointer != nil {
 		return node.nextPointer, nil
 	}
-	return nil, errors.New("No next node available.")
+	return nil, errors.New("no next node available")
 }
 
 // Helper method(s?)
@@ -93,11 +93,11 @@ func (list *LinkedList) getNode(index int) (*ListNode, error) {
 			currentNode = nextNode
 		}
 		if currentNode == nil {
-			return nil, fmt.Errorf("Index out of bounds: %d", index)
+			return nil, fmt.Errorf("index out of bounds: %d", index)
 		}
 		return currentNode, nil
 	}
-	return nil, errors.New("Index must be greater than or equal to 0.")
+	return nil, errors.New("index must be greater than or equal to 0")
 }
 
 // Removes a node from the list.
@@ -150,7 +150,7 @@ func (list *LinkedList) replaceNode(index int, newNode *ListNode) error {
 
 	nextNode := nodeToReplace.nextPointer
 	if nextNode == nil {
-		return fmt.Errorf("Error removing node from linked list: no next node available")
+		return fmt.Errorf("error removing node from linked list: no next node available")
 	}
 
 	linkNodes(previousNode, newNode, nextNode)
@@ -161,7 +161,7 @@ func (list *LinkedList) replaceNode(index int, newNode *ListNode) error {
 // Handles scenarios where the given index is invalid, or when the insertion is at the head.
 func (list *LinkedList) addNode(index int, newNode *ListNode) error {
 	if index < 0 {
-		return errors.New("Index must be greater than or equal to 0.")
+		return errors.New("index must be greater than or equal to 0")
 	}
 
 	// if the index is 0, we're adding the node at the head of the list
