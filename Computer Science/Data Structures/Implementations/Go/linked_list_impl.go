@@ -70,7 +70,14 @@ func (list *LinkedList) getNode(index int) (*ListNode, error) {
 	if index >= 0 {
 		currentNode := list.head
 		for i := 0; i < index; i++ {
-			currentNode, _ = currentNode.getNextNode()
+			nextNode, err := currentNode.getNextNode()
+			if err != nil {
+				return nil, err
+			}
+			currentNode = nextNode
+		}
+		if currentNode == nil {
+			return nil, fmt.Errorf("Index out of bounds: %d", index)
 		}
 		return currentNode, nil
 	}
