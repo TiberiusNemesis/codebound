@@ -125,7 +125,18 @@ func TestLinkedList_AddNode_AtHead(t *testing.T) {
 }
 
 func TestLinkedList_AppendNode(t *testing.T) {
-	// TODO: Write test cases for the appendNode method
+	list := LinkedList{}
+	node := &ListNode{data: "test data"} // I'm getting out of ideas here for test data (not that I had many to begin with)
+
+	list.appendNode(node)
+
+	if list.head != node {
+		t.Errorf("Expected head to be %v, but got %v", node, list.head)
+	}
+
+	if list.tail != node {
+		t.Errorf("Expected tail to be %v, but got %v", node, list.tail)
+	}
 }
 
 func TestListNode_GetData(t *testing.T) {
