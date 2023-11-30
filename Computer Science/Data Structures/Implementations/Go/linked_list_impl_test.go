@@ -229,5 +229,30 @@ func TestListNode_GetNextNode(t *testing.T) {
 }
 
 func TestLinkNodes(t *testing.T) {
-	// TODO: Write test cases for the linkNodes function
+	previousNode := &ListNode{data: "Previous Node"}
+	newNode := &ListNode{data: "New Node"}
+	nextNode := &ListNode{data: "Next Node"}
+
+	// Call the linkNodes function
+	linkNodes(previousNode, newNode, nextNode)
+
+	// Check if the previous node's nextPointer is set to the new node
+	if previousNode.nextPointer != newNode {
+		t.Errorf("Expected previous node's nextPointer to be set to the new node")
+	}
+
+	// Check if the new node's previousPointer is set to the previous node
+	if newNode.previousPointer != previousNode {
+		t.Errorf("Expected new node's previousPointer to be set to the previous node")
+	}
+
+	// Check if the new node's nextPointer is set to the next node
+	if newNode.nextPointer != nextNode {
+		t.Errorf("Expected new node's nextPointer to be set to the next node")
+	}
+
+	// Check if the next node's previousPointer is set to the new node
+	if nextNode.previousPointer != newNode {
+		t.Errorf("Expected next node's previousPointer to be set to the new node")
+	}
 }
