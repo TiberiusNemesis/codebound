@@ -9,8 +9,8 @@ import (
 // ListNode can contain any type of data.
 type ListNode struct {
 	data              interface{}
-	pointerToNext     *ListNode
-	pointerToPrevious *ListNode
+	nextPointer     *ListNode
+	previousPointer *ListNode
 }
 
 // Represents a linked list data structure. 
@@ -48,16 +48,16 @@ func (node *ListNode) getData() (interface{}, error) {
 
 // Getter for the previous node. 
 func (node *ListNode) getPreviousNode() (*ListNode, error) {
-	if node.pointerToPrevious != nil {
-		return node.pointerToPrevious, nil
+	if node.previousPointer != nil {
+		return node.previousPointer, nil
 	}
 	return nil, errors.New("No previous node available.")
 }
 
 // Getter for the next node.
 func (node *ListNode) getNextNode() (*ListNode, error) {
-	if node.pointerToNext != nil {
-		return node.pointerToNext, nil
+	if node.nextPointer != nil {
+		return node.nextPointer, nil
 	}
 	return nil, errors.New("No next node available.")
 }
@@ -89,8 +89,8 @@ func (list *LinkedList) removeNode(node *ListNode) error {
 		return fmt.Errorf("Error removing node from linked list: %v", nextNodeErr)
 	}
 
-	previousNode.pointerToNext = nextNode
-	nextNode.pointerToPrevious = previousNode
+	previousNode.nextPointer = nextNode
+	nextNode.previousPointer = previousNode
 	return nil
 }
 
@@ -110,10 +110,10 @@ func (list *LinkedList) replaceNode(index int, newNode *ListNode) error {
 		return fmt.Errorf("Error removing node from linked list: %v", nextNodeErr)
 	}
 
-	previousNode.pointerToNext = newNode
-	newNode.pointerToPrevious = previousNode
-	newNode.pointerToNext = nextNode
-	nextNode.pointerToPrevious = newNode
+	previousNode.nextPointer = newNode
+	newNode.previousPointer = previousNode
+	newNode.nextPointer = nextNode
+	nextNode.previousPointer = newNode
 	return nil
 }
 
@@ -125,9 +125,9 @@ func (list *LinkedList) addNode(index int, newNode *ListNode) error {
 	}
 
 	if index == 0 {
-		newNode.pointerToNext = list.head
+		newNode.nextPointer = list.head
 		if list.head != nil {
-			list.head.pointerToPrevious = newNode
+			list.head.previousPointer = newNode
 		}
 		list.head = newNode
 		if list.tail == nil {
@@ -141,13 +141,13 @@ func (list *LinkedList) addNode(index int, newNode *ListNode) error {
 		return err
 	}
 
-	nextNode := previousNode.pointerToNext
+	nextNode := previousNode.nextPointer
 
-	previousNode.pointerToNext = newNode
-	newNode.pointerToPrevious = previousNode
-	newNode.pointerToNext = nextNode
+	previousNode.nextPointer = newNode
+	newNode.previousPointer = previousNode
+	newNode.nextPointer = nextNode
 	if nextNode != nil {
-		nextNode.pointerToPrevious = newNode
+		nextNode.previousPointer = newNode
 	} else {
 		list.tail = newNode
 	}
@@ -157,8 +157,8 @@ func (list *LinkedList) addNode(index int, newNode *ListNode) error {
 
 func (list *LinkedList) appendNode(newNode *ListNode) {
 	if list.tail != nil {
-		list.tail.pointerToNext = newNode
-		newNode.pointerToPrevious = list.tail
+		list.tail.nextPointer = newNode
+		newNode.previousPointer = list.tail
 		list.tail = newNode
 	} else {
 		list.head = newNode
