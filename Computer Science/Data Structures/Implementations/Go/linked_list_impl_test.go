@@ -169,11 +169,63 @@ func TestListNode_GetData_NodeIsEmpty(t *testing.T) {
 }
 
 func TestListNode_GetPreviousNode(t *testing.T) {
-	// TODO: Write test cases for the getPreviousNode method
+	// Create a previous node
+	previousNode := &ListNode{data: "Previous Node"}
+
+	// Create a current node
+	currentNode := &ListNode{data: "Current Node", previousPointer: previousNode}
+
+	// Call the getPreviousNode method
+	previous, err := currentNode.getPreviousNode()
+
+	// Check if an error occurred
+	if err != nil {
+		t.Errorf("Error occurred while getting previous node: %v", err)
+	}
+
+	// Check if the previous node is correct
+	if previous != previousNode {
+		t.Errorf("Expected previous node to be %v, but got %v", previousNode, previous)
+	}
+}
+
+func TestListNode_GetPreviousNode_NoPreviousNodeAvailable(t *testing.T) {
+	// Create a current node with no previous node
+	currentNode := &ListNode{data: "Current Node"}
+
+	// Call the getPreviousNode method
+	previous, err := currentNode.getPreviousNode()
+
+	// Check if an error occurred
+	if err == nil {
+		t.Errorf("Error did not occur while getting previous node.")
+	}
+
+	// Check if the previous node is nil
+	if previous != nil {
+		t.Errorf("Expected previous node to be nil, but was %v", previous)
+	}
 }
 
 func TestListNode_GetNextNode(t *testing.T) {
-	// TODO: Write test cases for the getNextNode method
+	// Create a next node
+	nextNode := &ListNode{data: "Next Node"}
+
+	// Create a current node
+	currentNode := &ListNode{data: "Current Node", nextPointer: nextNode}
+
+	// Call the getNextNode method
+	next, err := currentNode.getNextNode()
+
+	// Check if an error occurred
+	if err != nil {
+		t.Errorf("Error occurred while getting next node: %v", err)
+	}
+
+	// Check if the next node is correct
+	if next != nextNode {
+		t.Errorf("Expected next node to be %v, but got %v", nextNode, next)
+	}
 }
 
 func TestLinkNodes(t *testing.T) {
