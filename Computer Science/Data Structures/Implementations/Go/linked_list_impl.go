@@ -149,10 +149,7 @@ func (list *LinkedList) replaceNode(index int, newNode *ListNode) error {
 	}
 
 	nextNode := nodeToReplace.nextPointer
-	if nextNode == nil {
-		return fmt.Errorf("error removing node from linked list: no next node available")
-	}
-
+	
 	linkNodes(previousNode, newNode, nextNode)
 	return nil
 }
