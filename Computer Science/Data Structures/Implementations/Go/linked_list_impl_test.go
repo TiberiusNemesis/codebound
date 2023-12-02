@@ -259,6 +259,109 @@ func TestLinkedList_AddNode_AtHead(t *testing.T) {
 	}
 }
 
+func TestLinkedList_AddNode_BelowIndexZero(t *testing.T) {
+	list := LinkedList{}
+	firstNode := &ListNode{data: "mistakes were made"}
+	list.appendNode(firstNode)
+	
+	// We add a node at index -1 
+	newNode := &ListNode{data: "well played"}
+
+	err := list.addNode(-1, newNode)
+	if err == nil {
+		t.Errorf("No error occurred while adding node: %v", err)
+	}
+
+	// Then verify that it was not added to the list
+	_, err = list.getNode(-1)
+	if err == nil {
+		t.Error("Expected error when getting node at index -1, but no error was thrown")
+	}
+}
+
+func TestLinkedList_AddNode_SingleHeadAndTailNode(t *testing.T) {
+	list := LinkedList{}
+	lonelyNode := &ListNode{data: "white wolf"}	
+
+	// We add a node at index 0 (the head and tail)	
+	list.addNode(0, lonelyNode)
+
+    // Then we confirm that the node was added at the correct index
+	node, err := list.getNode(0)
+	if err != nil {
+		t.Errorf("Error occurred while getting the added node: %v", err)
+	}
+	if node != lonelyNode {
+		t.Errorf("Expected added node to be %v, but was %v", lonelyNode, node)
+	}
+}
+
+func TestLinkedList_AddNode_AtMiddle(t *testing.T) {
+	list := LinkedList{}
+	firstNode := &ListNode{data: "use"}
+	secondNode := &ListNode{data: "the"}
+	thirdNode := &ListNode{data: "force"}
+	list.appendNode(firstNode)
+	list.appendNode(secondNode)	
+	list.appendNode(thirdNode)
+
+	// We add a node at index 1 (the middle)
+	newNode := &ListNode{data: "a massive amount of"}
+
+	err := list.addNode(1, newNode)
+	if err != nil {
+		t.Errorf("Error occurred while adding node: %v", err)
+	}
+
+	// Then verify that the it was added at the correct index
+	node, err := list.getNode(1)
+	if err != nil {
+		t.Errorf("Error occurred while getting the added node: %v", err)
+	}
+	if node != newNode {
+		t.Errorf("Expected added node to be %v, but was %v", secondNode, node)
+	}
+}
+
+func TestLinkedList_AddNode_AtTail(t *testing.T) {
+	list := LinkedList{}
+	firstNode := &ListNode{data: "use"}
+	secondNode := &ListNode{data: "the"}
+	thirdNode := &ListNode{data: "force"}
+	list.appendNode(firstNode)
+	list.appendNode(secondNode)	
+	list.appendNode(thirdNode)
+
+	// We add a node at index 3 (after the tail, which makes this node become the tail)
+	newNode := &ListNode{data: "Luke"}
+
+	err := list.addNode(3, newNode)
+	if err != nil {
+		t.Errorf("Error occurred while adding node: %v", err)
+	}
+
+	// Then verify that the it was added at the correct index
+	node, err := list.getNode(3)
+	if err != nil {
+		t.Errorf("Error occurred while getting the added node: %v", err)
+	}
+	if node != newNode {
+		t.Errorf("Expected added node to be %v, but was %v", secondNode, node)
+	}
+}
+
+func TestLinkedList_AddNode_ErrorScenario(t *testing.T) {
+    ll := &LinkedList{} // Creating an empty list
+    newNode := &ListNode{data: "test data"}
+
+    err := ll.addNode(1, newNode) // Trying to add a node at index 1, which should trigger the error
+
+    if err == nil {
+        t.Errorf("Expected an error when adding a node at index 1 to an empty list, but got nil")
+    }
+}
+
+
 func TestLinkedList_AppendNode(t *testing.T) {
 	list := LinkedList{}
 	node := &ListNode{data: "test data"} // I'm getting out of ideas here for test data (not that I had many to begin with)
