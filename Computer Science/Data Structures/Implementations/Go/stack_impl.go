@@ -23,11 +23,8 @@ func (stack *Stack) pop() (*StackElement, error) {
 	lastElement, err := stack.peek()
 	if err != nil {
 		return nil, err
-	}
-	fmt.Println("Element being popped: ", lastElement)
-	
+	}	
 	stack.elements = stack.elements[0:len(stack.elements)-1]
-	fmt.Println("Stack after pop: ", stack.elements)
 	return lastElement, nil
 }
 
@@ -38,7 +35,7 @@ func (stack *Stack) push(newElementData any) error {
 		stack.elements = append(stack.elements, newElement)
 		return nil
 	}
-	return fmt.Errorf("Data to be added is null.")
+	return fmt.Errorf("data added to stack is null")
 }
 
 // Returns the last element of the stack
@@ -46,5 +43,5 @@ func (stack *Stack) peek() (*StackElement, error) {
 	if (len(stack.elements) > 0) {
 		return &stack.elements[len(stack.elements)-1], nil
 	}
-	return nil, fmt.Errorf("There are no elements in the stack.")
+	return nil, fmt.Errorf("there are no elements in the stack")
 }
