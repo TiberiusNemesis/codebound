@@ -180,12 +180,13 @@ func (list *LinkedList) addNode(index int, newNode *ListNode) error {
 	}
 	
 	// else, we're adding the node somewhere in the middle or at the end of the list
-	linkNodes(previousNode, newNode, previousNode.nextPointer)
 
-	// If it was at the end, we update the tail
+	// If it was at the end, we update the tail reference of the list
 	if previousNode.nextPointer == nil {
 		list.tail = newNode
 	}
+
+	linkNodes(previousNode, newNode, previousNode.nextPointer)
 
 	return nil
 }
