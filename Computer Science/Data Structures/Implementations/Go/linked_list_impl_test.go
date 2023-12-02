@@ -190,6 +190,47 @@ func TestLinkedList_ReplaceNode(t *testing.T) {
 	}
 }
 
+// Write a test case for ReplaceNode when the index for the node to be replaced points to a non-existent node
+
+func TestLinkedList_ReplaceNode_InvalidIndex(t *testing.T) {
+	list := LinkedList{}
+	firstNode := &ListNode{data: "use"}
+	secondNode := &ListNode{data: "the"}
+	thirdNode := &ListNode{data: "force"}
+	list.appendNode(firstNode)
+	list.appendNode(secondNode)
+	list.appendNode(thirdNode)
+
+	// We replace the second node with a new one
+	newNode := &ListNode{data: "dark side"}
+	err := list.replaceNode(3, newNode)
+	if err == nil {
+		t.Error("Expected error when replacing node at index 3, but no error was thrown")
+	}
+}
+
+func TestLinkedList_ReplaceNode_SingleNodeList(t *testing.T) {
+	list := LinkedList{}
+	firstNode := &ListNode{data: "lonely"}
+	list.appendNode(firstNode)
+	
+	// We replace the first node with a new one
+	newNode := &ListNode{data: "akon"}
+	err := list.replaceNode(0, newNode)
+	if err != nil {
+		t.Errorf("Error occurred while replacing node at head.")
+	}
+
+	// Then we verify that the tail/head node really has been replaced
+	replacedNode, err := list.getNode(0)
+	if err != nil {
+		t.Errorf("Error occurred while getting the replaced node: %v", err)
+	}
+	if replacedNode != newNode {
+		t.Errorf("Expected replaced node to be %v, but was %v", newNode, replacedNode)
+	}
+}
+
 func TestLinkedList_AddNode_AtHead(t *testing.T) {
 	list := LinkedList{}
 	firstNode := &ListNode{data: "use"}
