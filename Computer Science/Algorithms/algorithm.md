@@ -27,9 +27,9 @@ The algorithm should be applicable for all problems in a desired form, i.e. it c
 
 ## Time Complexity
 
-A concept that expresses the amount of resources (usually time) it takes to run an algorithm. Basically, it's a way to express the efficiency or speed of an algorithm by the number of operations it performs before reaching the desired result. Usually, thi number is expressed as a function of the size of the input data, which is often referred to as "n".
+A concept that expresses the amount of resources (usually time) it takes to run an algorithm. Basically, it's a way to express the efficiency or speed of an algorithm by the number of operations it performs before reaching the desired result. Usually, this number is expressed as a function of the size of the input data, which is often referred to as "n".
 
-Most of the time, time complexity is expressed by Big O notation, which defines the worst-case scenario for an algorithm's runtime. It can also be expressed by Big Θ and Big Ω to define the average and best-case scenarios.
+Most of the time, time complexity is expressed by [Big O](Computer%20Science/Asymptotic%20Notation/Big%20O.md) notation, which defines the worst-case scenario for an algorithm's runtime. It can also be expressed by [Big Θ](Computer%20Science/Asymptotic%20Notation/Big%20Θ.md) and [Big Ω](Computer%20Science/Asymptotic%20Notation/Big%20Ω.md) to define the average and best-case scenarios.
 
 ## Sources
 
