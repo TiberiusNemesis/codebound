@@ -2,3 +2,6 @@
 .DS_Store
 .obsidian
 updates.log
+.vscode/
+node_modules/
+coverage/

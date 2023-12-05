@@ -1,0 +1,27 @@
+{
+  "name": "codebound-js-data-structures",
+  "version": "1.0.0",
+  "description": "JavaScript implementations of the most common data structures used, along with Jest unit tests. Made for the Codebound library.",
+  "main": "HashTable.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "jest": {
+    "verbose": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TiberiusNemesis/codebound.git"
+  },
+  "author": "Tiberius Dourado",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TiberiusNemesis/codebound/issues"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.23.3",
+    "babel-jest": "^29.7.0",
+    "jest": "^27.0.0"
+  },
+  "homepage": "https://github.com/TiberiusNemesis/codebound#readme"
+}

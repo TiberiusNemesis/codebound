@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strings"
 	"time"
 )
@@ -18,7 +19,7 @@ func getFileList(root string) ([]string, error) {
 		if err != nil {
 			return err
 		}
-		if strings.Contains(path, "Unsorted/") {
+		if strings.Contains(path, "Unsorted/") || strings.Contains(path, "node_modules/") {
 			return nil // Ignore files in the Unsorted folder
 		}
 		if !info.IsDir() && strings.HasSuffix(path, ".md") {
@@ -36,7 +37,7 @@ func sanitizePath(path string) string {
 
 // updateLinks reads a file and replaces bare words that match file names with Markdown links to those files.
 // It will not link to the current file.
-func updateLinks(filePath string, fileNames map[string]string, logFile *os.File) (int, error) {
+func updateLinks(filePath string, fileNames map[string]string, sortedFileNames []string, logFile *os.File) (int, error) {
 	file, err := os.Open(filePath)
 	if err != nil {
 		return 0, err
@@ -47,19 +48,25 @@ func updateLinks(filePath string, fileNames map[string]string, logFile *os.File)
 		lines       []string
 		updates     int
 		scanner     = bufio.NewScanner(file)
-		markdownURL = regexp.MustCompile(`\[[^\]]*\]\([^)]*\)`)   // Matches any Markdown URL
+		markdownURL = regexp.MustCompile(`\[[^\]]*\]\([^)]*\)`) // Matches any Markdown URL
+		auxArray    []string
 	)
 
 	for scanner.Scan() {
 		line := scanner.Text()
 		updatedLine := line
 		matches := markdownURL.FindAllStringIndex(line, -1)
-
-		for _, fileName := range fileNames {
+		// Skip the line if the first character is "!"
+		if len(line) > 0 && line[0] == '!' {
+			lines = append(lines, updatedLine)
+			continue
+		}
+		// Iterate over sorted filenames
+		for _, fileNameBase := range sortedFileNames {
+			fileName := fileNames[fileNameBase]
 			if fileName == filePath {
 				continue // Skip if the filename is the same as the current file's path
 			}
-			fileNameBase := strings.TrimSuffix(filepath.Base(fileName), ".md")
 			pattern := fmt.Sprintf(`\b%s\b`, regexp.QuoteMeta(fileNameBase))
 			wordRegex := regexp.MustCompile(pattern)
 			idx := wordRegex.FindStringIndex(updatedLine)
@@ -67,10 +74,12 @@ func updateLinks(filePath string, fileNames map[string]string, logFile *os.File)
 			// Replace only if the word is not part of a Markdown URL
 			if idx != nil && !isInRanges(matches, idx) {
 				link := sanitizePath(fileName)
-				updatedLine = wordRegex.ReplaceAllString(updatedLine, fmt.Sprintf("[%s](%s)", fileNameBase, link))
+				auxArray = append(auxArray, fmt.Sprintf("[%s](%s)", fileNameBase, link))
+				updatedLine = wordRegex.ReplaceAllString(updatedLine, fmt.Sprintf("&W%d", updates))
 				updates++
 			}
 		}
+
 		lines = append(lines, updatedLine)
 	}
 
@@ -80,6 +89,20 @@ func updateLinks(filePath string, fileNames map[string]string, logFile *os.File)
 
 	// Write the updated content back to the file if there were updates
 	if updates > 0 {
+		err = os.WriteFile(filePath, []byte(strings.Join(lines, "\n")), 0666)
+		if err != nil {
+			return updates, err
+		}
+
+		// Replace the placeholders with the respective links
+		for i, link := range auxArray {
+			placeholder := fmt.Sprintf("&W%d", i)
+			for j, line := range lines {
+				lines[j] = strings.ReplaceAll(line, placeholder, link)
+			}
+		}
+
+		// Write the final content back to the file
 		err = os.WriteFile(filePath, []byte(strings.Join(lines, "\n")), 0666)
 	}
 	return updates, err
@@ -98,7 +121,7 @@ func isInRanges(ranges [][]int, index []int) bool {
 func main() {
 	start := time.Now()
 	logFileName := "updates.log"
-	logFile, err := os.Create(logFileName)
+	logFile, err := os.OpenFile(logFileName, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
 	if err != nil {
 		panic(err)
 	}
@@ -106,7 +129,7 @@ func main() {
 
 	root := "./" // You can set this to the root directory of your Obsidian vault
 
-	// Get a list of all markdown files 
+	// Get a list of all markdown files
 	files, err := getFileList(root)
 	if err != nil {
 		panic(err)
@@ -120,9 +143,18 @@ func main() {
 		fileNames[strings.TrimSuffix(filepath.Base(file), filepath.Ext(file))] = file
 	}
 
+	// We create a sorted list of filenames by descending length to ensure longer names are replaced first
+	var sortedFileNames []string
+	for name := range fileNames {
+		sortedFileNames = append(sortedFileNames, name)
+	}
+	sort.Slice(sortedFileNames, func(i, j int) bool {
+		return len(sortedFileNames[i]) > len(sortedFileNames[j])
+	})
+
 	// Update links in all files
 	for _, file := range files {
-		updates, err := updateLinks(file, fileNames, logFile)
+		updates, err := updateLinks(file, fileNames, sortedFileNames, logFile)
 		if err != nil {
 			fmt.Fprintf(logFile, "Error updating links in file %s: %s\n", file, err)
 		} else if updates > 0 {
@@ -137,6 +169,9 @@ func main() {
 }
 
 func removeLinks(filePath string) (int, error) {
+	if strings.Contains(filePath, "README.md") {
+		return 0, nil // No removing links from README.md
+	}
 	file, err := os.Open(filePath)
 	if err != nil {
 		return 0, err
@@ -147,15 +182,22 @@ func removeLinks(filePath string) (int, error) {
 		lines   []string
 		updates int
 		scanner = bufio.NewScanner(file)
-		regex   = regexp.MustCompile(`\[[^\]]+\]\([^)]+\)`) // Matches Markdown links
+		regex   = regexp.MustCompile(`\[(.*?)\]\((.*?)\)`)
 	)
 
 	for scanner.Scan() {
 		line := scanner.Text()
-		updatedLine := regex.ReplaceAllStringFunc(line, func(match string) string {
+
+		// We also avoid removing external links and images
+		if strings.Contains(line, "](http") || (line[0] == '!') {
+			lines = append(lines, line)
+			continue
+		}
+
+		updatedLine := regex.ReplaceAllString(line, "$1") // Remove the link, but keep the word
+		if line != updatedLine {
 			updates++
-			return ""
-		})
+		}
 		lines = append(lines, updatedLine)
 	}
 
