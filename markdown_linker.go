@@ -19,7 +19,7 @@ func getFileList(root string) ([]string, error) {
 		if err != nil {
 			return err
 		}
-		if strings.Contains(path, "Unsorted/") {
+		if strings.Contains(path, "Unsorted/") || strings.Contains(path, "node_modules/") {
 			return nil // Ignore files in the Unsorted folder
 		}
 		if !info.IsDir() && strings.HasSuffix(path, ".md") {
