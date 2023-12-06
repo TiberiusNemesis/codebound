@@ -50,6 +50,24 @@ When two keys hash to the same index, the hash table needs to have a strategy to
 The most common strategy is called chaining, where a linked list is used at each index.  
 Another option is open addressing, where the hash table searches for the next available slot and puts the element there.
 
+## Operations and Time Complexity
+
+This depends on whether or not collisions will occur, which is often directly correlated to the quality of the hash function and the load factor of the hash table (i.e. the ratio of the number of elements to the size of the hash table, higher load = more collisions)
+
+### Ideal scenario with no collisions
+
+- Access: O(1)
+- Search: O(1)
+- Insertion: O(1)
+- Deletion: O(1)
+
+### Real-world scenario with collisions
+
+- Access: Average O(1), worst O(n)
+- Search: Average O(1), worst O(n)
+- Insertion: Average O(1), worst O(n)
+- Deletion: Average O(1), worst O(n)
+
 ## Sources
 
 - [Hash Table | Illustrated Data Structures](https://www.youtube.com/watch?v=jalSiaIi8j4)
