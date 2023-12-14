@@ -10,9 +10,9 @@ Git works by tracking folders and subfolders, along with the files contained in 
 
 ### Repositories, Commits and Branches
 
-A folder structure being tracked by git is called a *repository*, and inside a repository, we can save a snapshot of the folder structure by using a *commit*.
+A folder structure being tracked by git is called a *repository*, and inside a repository, we can save a snapshot of the folder structure by using a *[commit](Software%20Engineering/Version%20Control%20Systems/commit.md)*.
 
-Commits are organized in structures called *branches.* Each branch represents an independent sequence of commits, and to combine different sets of commits, a merge or a rebase between branches can be performed. This allows for simultaneous development by multiple members of an organization even if they are altering the same repository.
+Commits are organized in structures called *branches.* Each branch represents an independent sequence of commits, and to combine different sets of commits, a [merge](Software%20Engineering/Version%20Control%20Systems/merge.md) or a rebase between branches can be performed. This allows for simultaneous development by multiple members of an organization even if they are altering the same repository.
 
 ## Sources
 

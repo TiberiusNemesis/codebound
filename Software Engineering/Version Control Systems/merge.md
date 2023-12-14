@@ -1,6 +1,6 @@
 # Branch merging
 
-Merging is one of the core operations in git. It combines changes and the history from two different branches into a single branch, allowing for the integration of new features and updates from separate streams of effort.
+Merging is one of the core operations in [git](Software%20Engineering/Version%20Control%20Systems/git.md). It combines changes and the history from two different branches into a single branch, allowing for the integration of new features and updates from separate streams of effort.
 
 ## Types
 
@@ -10,7 +10,7 @@ Happens when the target branch (i.e. the one where we are applying our changes t
 
 ### Three-way merge
 
-Used when both target and source branches both have had new commits. Git automatically creates a "merge commit" that combines the changes from both branches.
+Used when both target and source branches both have had new commits. Git automatically creates a "merge [commit](Software%20Engineering/Version%20Control%20Systems/commit.md)" that combines the changes from both branches.
 
 ## Merge conflicts
 
