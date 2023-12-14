@@ -4,11 +4,15 @@ Git (sometimes called Git SCM) is a tool used to track and manage changes made i
 
 As of December 2023, it is the most widely utilized version control system in software engineering.
 
-Git works by tracking folders and subfolders, along with the files contained in them. It works by storing changes to these files in a type of database -- then allowing for these changes to be reverted, tracked, modified, combined, shared, and managed in a multitude of ways, even if a large number of people are working on the same files. 
+## How does it work?
 
-A folder structure being tracked by git is called a *repository*, and inside a repository, we can save a snapshot of the folder structure by using a *commit* (multiple commits, each one representing a different version with additional changes applied).
+Git works by tracking folders and subfolders, along with the files contained in them. It stores changes to these files in a type of database -- then allows for these changes to be reverted, tracked, modified, combined, shared, and managed in a multitude of ways. This is particularly effective in a team environment, where it is possible to have a large number of people working on the same set of files.
 
-Commits are organized in a structure called a *branch.* Each branch represents a different, independent sequence of changes, and to combine different sets of changes together, a merge or a rebase can be performed; the end result is that one branch will absorb the other branch's commits and changes applied.
+### Repositories, Commits and Branches
+
+A folder structure being tracked by git is called a *repository*, and inside a repository, we can save a snapshot of the folder structure by using a *commit*.
+
+Commits are organized in structures called *branches.* Each branch represents an independent sequence of commits, and to combine different sets of commits, a merge or a rebase between branches can be performed. This allows for simultaneous development by multiple members of an organization even if they are altering the same repository.
 
 ## Sources
 
