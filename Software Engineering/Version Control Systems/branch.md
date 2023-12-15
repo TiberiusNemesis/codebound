@@ -4,7 +4,7 @@ A branch is an independent line of development in a repository. In essence, each
 
 ## Working with Branches
 
-Creating a branch involves making a new pointer to the current commit. From that point on, the new branch can proceed in a new direction, having its changes be separate from the origin branch. Switching between branches is also possible, enabling a user to work with a separate set of files, possibly in two different tasks at once that require changing different files (or the same file in different ways).
+Creating a branch involves making a new pointer to the current [commit](Software%20Engineering/Version%20Control%20Systems/commit.md). From that point on, the new branch can proceed in a new direction, having its changes be separate from the origin branch. Switching between branches is also possible, enabling a user to work with a separate set of files, possibly in two different tasks at once that require changing different files (or the same file in different ways).
 
 ## Sources
 

@@ -1,16 +1,16 @@
 # Branch merging
 
-Merging is one of the core operations in [git](Software%20Engineering/Version%20Control%20Systems/git.md). It combines changes and the history from two different branches into a single branch, allowing for the integration of new features and updates from separate streams of effort.
+Merging is one of the core operations in [git](Software%20Engineering/Version%20Control%20Systems/git.md). It combines changes and the history from two different branches into a single [branch](Software%20Engineering/Version%20Control%20Systems/branch.md), allowing for the integration of new features and updates from separate streams of effort.
 
 ## Types
 
 ### Fast-forward merge
 
-Happens when the target branch (i.e. the one where we are applying our changes to) has had no additional commits since our branch (aka source branch) was created. Since all changes from the target branch are already in the source branch, this type of merge is simple and straightforward.
+Happens when the target [branch](Software%20Engineering/Version%20Control%20Systems/branch.md) (i.e. the one where we are applying our changes to) has had no additional commits since our [branch](Software%20Engineering/Version%20Control%20Systems/branch.md) (aka source [branch](Software%20Engineering/Version%20Control%20Systems/branch.md)) was created. Since all changes from the target [branch](Software%20Engineering/Version%20Control%20Systems/branch.md) are already in the source [branch](Software%20Engineering/Version%20Control%20Systems/branch.md), this type of merge is simple and straightforward.
 
 ### Three-way merge
 
-Used when both target and source branches both have had new commits. Git automatically creates a "merge [commit](Software%20Engineering/Version%20Control%20Systems/commit.md)" that combines the changes from both branches.
+Used when both target and source branches both have had new commits. Git automatically creates a merge [commit](Software%20Engineering/Version%20Control%20Systems/commit.md) that combines the changes from both branches.
 
 ## Merge conflicts
 
