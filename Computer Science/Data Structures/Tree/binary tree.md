@@ -13,3 +13,9 @@ Additional subcategories:
 - [Balanced tree](Computer%20Science/Data%20Structures/Tree/balanced%20tree.md)
 - [Unbalanced tree](Computer%20Science/Data%20Structures/Tree/unbalanced%20tree.md)
 - [Binary search tree](Computer%20Science/Data%20Structures/Tree/binary%20search%20tree.md)
+
+## Sources
+
+- [MIT OpenCourseWare, Binary Trees Part 1](https://www.youtube.com/watch?v=76dhtgZt38A&list=PLUl4u3cNGP63EdVPNLG3ToM6LaEUuStEY&index=10)
+- [GeeksForGeeks, Applications, Advantages and Disadvantages of Binary Tree](https://www.geeksforgeeks.org/applications-advantages-and-disadvantages-of-binary-tree/?ref=lbp)
+- [wiki, Binary Tree](https://en.wikipedia.org/wiki/Binary_tree)
