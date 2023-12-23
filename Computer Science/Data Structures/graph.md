@@ -1,6 +1,6 @@
 # Graph
 
-Graphs are a kind of [data structure](Computer%20Science/Data%20Structures/data%20structure.md) that are made up of nodes (also called vertices) that connect to each other through lines. We call these lines "edges". Quite similar to the [tree](Computer%20Science/Data%20Structures/tree.md), really. The difference is that the graph does not *require* a hierarchical structure.
+Graphs are a kind of [data structure](Computer%20Science/Data%20Structures/data%20structure.md) that are made up of nodes (also called vertices) that connect to each other through lines. We call these lines "edges". Quite similar to the [tree](Computer%20Science/Data%20Structures/tree.md), really. The difference is that the graph *does not require* a hierarchical structure.
 
 When the edges in a graph have a direction, we call it a [directed graph](Computer%20Science/Data%20Structures/Graph/directed%20graph.md).  
 When they do not have a specified direction, we call it an [undirected graph](Computer%20Science/Data%20Structures/Graph/undirected%20graph.md).  
@@ -13,7 +13,7 @@ Other relevant classifications of graphs:
 - Connected graph: When there is a path between every pair of nodes.
 - Complete graph: When there is an edge between every pair of nodes.
 - Planar graph: When the graph can be inserted in a 2D plane with no edges intersecting.
-- Regular graph: When all nodes have the same degree (i.e. the same number of edges connected to them)
+- Regular graph: When all nodes have the same degree (i.e. the same number of edges connected to them).
 
 ## Sources
 
