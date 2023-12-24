@@ -20,11 +20,11 @@ This repository is a collection of markdown files containing my annotations and 
 
 ## How to use this repository
 
-Navigate through the folders to find study notes on various topics. Each markdown file is an annotation or a collection of notes on a particular concept. All of them are original content -- they are my own words describing my understanding of the topic.   
+Navigate through the folders to find study notes on various topics. Each markdown file is an annotation or a collection of notes on a particular concept. All of them are original content -- they are my own words describing my understanding of the topic.
 
-There is a script made in Golang for this repo that automatically links topics -- each time a match is found for one of the file names inside a Markdown file, a link will automatically be added pointing to the other file. 
+There is a script made in Golang for this repo that automatically links topics -- each time a match is found for one of the file names inside a Markdown file, a link will automatically be added pointing to the other file.
 
-e.g. 
+e.g.
 Before the script has been executed, a line may look like this:
 
 ```markdown
@@ -60,6 +60,6 @@ Credits to DALL-E for the header image.
 
 ---
 
-*Authored by Tiberius "Nemesis" Dourado.*
+Authored by Tiberius "Nemesis" Dourado.
 
-##### Journey before destination.
+*Journey before destination.*
