@@ -1,16 +1,16 @@
 # Binary Search Tree
 
-A type of binary tree which is sorted in a manner where for each node, the value of all the nodes in the left subtree have a lesser (or equal) value, and values in the right subtree always have a greater value.  
+A type of [binary tree](Computer%20Science/Data%20Structures/Tree/binary%20tree.md) which is sorted in a manner where for each node, the value of all the nodes in the left subtree have a lesser (or equal) value, and values in the right subtree always have a greater value.  
 
 ![binary-search-tree](/Assets/binary-search-tree.png)
 
-This allows us to perform the binary search algorithm very efficiently; a binary search tree, when also a balanced tree, has a time complexity of O(log n) for its insert/find/delete operations (on average).
+This allows us to perform the binary search [algorithm](Computer%20Science/Algorithms/algorithm.md) very efficiently; a binary search [tree](Computer%20Science/Data%20Structures/tree.md), when also a [balanced tree](Computer%20Science/Data%20Structures/Tree/balanced%20tree.md), has a time complexity of O(log n) for its insert/find/delete operations (on average).
 
 ## Operations and Time Complexity
 
 ### Worst-case
 
-If it is not a balanced tree, the BST will not have the ideal structure to perform the operations in the most efficient manner:
+If it is not a [balanced tree](Computer%20Science/Data%20Structures/Tree/balanced%20tree.md), the BST will not have the ideal structure to perform the operations in the most efficient manner:
 
 - Access: O(n)
 - Search: O(n)

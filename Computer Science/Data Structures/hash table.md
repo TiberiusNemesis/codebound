@@ -1,6 +1,6 @@
 # Hash Table
 
-A hash table, map, hashmap, dictionary or *associative array* are all different names that refer to the same [data structure](Computer%20Science/Data%20Structures/data%20structure.md) that handles relationships of key-value pairs and stores them into an array-like structure -- it allows for very fast access of elements since the lookup is performed by using the key. Since each key is unique and get(key) will return the value associated to that key, that makes accessing an element a constant operation (when referring to time complexity).
+A hash table, map, hashmap, dictionary or *associative [array](Computer%20Science/Data%20Structures/array.md)* are all different names that refer to the same [data structure](Computer%20Science/Data%20Structures/data%20structure.md) that handles relationships of key-value pairs and stores them into an [array](Computer%20Science/Data%20Structures/array.md)-like structure -- it allows for very fast access of elements since the lookup is performed by using the key. Since each key is unique and get(key) will return the value associated to that key, that makes accessing an element a constant operation (when referring to time complexity).
 
 ## How does it work?
 
@@ -24,8 +24,8 @@ console.log(phone) // output will be "Samsung Galaxy"
 
 ### Hash Function
 
-This is a function that takes in a key and creates an index where the key-value pair will be stored in the array.  
-A good hash function distributes keys uniformly across the array in order to minimize collisions (which are situations where multiple keys hash to the same index).
+This is a function that takes in a key and creates an index where the key-value pair will be stored in the [array](Computer%20Science/Data%20Structures/array.md).  
+A good hash function distributes keys uniformly across the [array](Computer%20Science/Data%20Structures/array.md) in order to minimize collisions (which are situations where multiple keys hash to the same index).
 
 Example hash function to determine in which index the key-value pair should be inserted:
 
@@ -47,7 +47,7 @@ Example hash function to determine in which index the key-value pair should be i
 ### Handling Collisions
 
 When two keys hash to the same index, the hash table needs to have a strategy to handle this.  
-The most common strategy is called chaining, where a linked list is used at each index.  
+The most common strategy is called chaining, where a [linked list](Computer%20Science/Data%20Structures/linked%20list.md) is used at each index.  
 Another option is open addressing, where the hash table searches for the next available slot and puts the element there.
 
 ## Operations and Time Complexity

@@ -1,10 +1,10 @@
 # Binary Tree
 
-A subtype of the [tree](Computer%20Science/Data%20Structures/tree.md) data structure where each node has 0, 1, or 2 child nodes.
+A subtype of the [tree](Computer%20Science/Data%20Structures/tree.md) [data structure](Computer%20Science/Data%20Structures/data%20structure.md) where each node has 0, 1, or 2 child nodes.
 
-Binary trees are used for several different purposes, depending on their characteristics. Some use cases include representing different types of file systems or organizational structures, representation of expressions where each node represents an operator and each child represents an operand; efficient searching algorithm implementations with the binary search tree; or even an efficient priority queue for fast operations using a binary heap.
+Binary trees are used for several different purposes, depending on their characteristics. Some use cases include representing different types of file systems or organizational structures, representation of expressions where each node represents an operator and each child represents an operand; efficient searching [algorithm](Computer%20Science/Algorithms/algorithm.md) implementations with the [binary search tree](Computer%20Science/Data%20Structures/Tree/binary%20search%20tree.md); or even an efficient priority [queue](Computer%20Science/Data%20Structures/queue.md) for fast operations using a binary [heap](Computer%20Science/Data%20Structures/heap.md).
 
-Binary trees serve as the foundation for more complex tree structures and algorithms, and have a really high influence on many computational tasks and systems.
+Binary trees serve as the foundation for more complex [tree](Computer%20Science/Data%20Structures/tree.md) structures and algorithms, and have a really high influence on many computational tasks and systems.
 
 Additional subcategories:
 
