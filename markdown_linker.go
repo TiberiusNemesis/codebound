@@ -102,8 +102,12 @@ func updateLinks(filePath string, fileNames map[string]string, sortedFileNames [
 			}
 		}
 
-		// Write the final content back to the file
-		err = os.WriteFile(filePath, []byte(strings.Join(lines, "\n")), 0666)
+		// Check for the final newline and preserve it if it exists
+		if len(lines) > 0 && lines[len(lines)-1] != "" {
+			err = os.WriteFile(filePath, []byte(strings.Join(lines, "\n")+"\n"), 0666)
+		} else {
+			err = os.WriteFile(filePath, []byte(strings.Join(lines, "\n")), 0666)
+		}
 	}
 	return updates, err
 }
@@ -135,7 +139,6 @@ func main() {
 		panic(err)
 	}
 	// removeLinksFromFiles(files) // Uncomment this line to remove all links from all files
-
 
 	// Create a map of file names without extension to their relative paths
 	fileNames := make(map[string]string)
@@ -209,6 +212,14 @@ func removeLinks(filePath string) (int, error) {
 	if updates > 0 {
 		err = os.WriteFile(filePath, []byte(strings.Join(lines, "\n")), 0666)
 	}
+
+	// Check for the final newline and preserve it if it exists
+	if len(lines) > 0 && lines[len(lines)-1] == "" {
+		err = os.WriteFile(filePath, []byte(strings.Join(lines, "\n")+"\n"), 0666)
+	} else {
+		err = os.WriteFile(filePath, []byte(strings.Join(lines, "\n")), 0666)
+	}
+
 	return updates, err
 }
 
