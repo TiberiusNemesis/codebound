@@ -1,5 +1,9 @@
 package data_structures_impl
 
+import (
+    "math"
+)
+
 type BinaryTree struct {
 	Root *BinaryTreeNode
 }
@@ -106,4 +110,67 @@ func findNode(node *BinaryTreeNode, key int) (*BinaryTreeNode, bool) {
         return findNode(node.Left, key)
     }
     return findNode(node.Right, key)
+}
+
+// GetLastNode returns the last node in a complete binary tree of a given size
+func GetLastNode(root *BinaryTreeNode, size int) *BinaryTreeNode {
+    if root == nil || size <= 0 {
+        return nil
+    }
+
+    path := size
+    bits := int(math.Log2(float64(size)))
+
+    // This is representing the number of nodes in binary
+    // This binary representation (excluding the most significant bit) can be used as a guide to traverse from the root to the last node
+    // 0 means go to the left child
+    // 1 means go to the right child
+
+    for bits > 0 {
+        bits--
+        if (path & (1 << bits)) == 0 {
+            root = root.Left
+        } else {
+            root = root.Right
+        }
+    }
+    return root
+}
+
+// RemoveLastNode removes the last node in a complete binary tree of a given size
+func RemoveLastNode(root *BinaryTreeNode, size int) *BinaryTreeNode {
+    if root == nil || size <= 0 {
+        return nil
+    }
+
+    if size == 1 {
+        return nil
+    }
+
+    path := size
+    bits := int(math.Log2(float64(size)))
+
+    // This is representing the number of nodes in binary
+    // This binary representation (excluding the most significant bit) can be used as a guide to traverse from the root to the last node
+    // 0 means go to the left child
+    // 1 means go to the right child
+
+    parent := root
+    for bits > 1 { 
+        bits--
+        if (path & (1 << bits)) == 0 {
+            parent = parent.Left
+        } else {
+            parent = parent.Right
+        }
+    }
+
+    // Except in this case, we remove the last node when we find it
+    if (path & 1) == 0 {
+        parent.Left = nil
+    } else {
+        parent.Right = nil
+    }
+
+    return root
 }
