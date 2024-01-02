@@ -2,4 +2,5 @@ go 1.21.1
 
 use (
     "Computer Science/Data Structures/Implementations/Go"
+    "Computer Science/Algorithms/Sorting/Implementations/Go"
 )
