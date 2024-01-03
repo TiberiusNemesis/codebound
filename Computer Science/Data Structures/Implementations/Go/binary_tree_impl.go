@@ -174,3 +174,24 @@ func RemoveLastNode(root *BinaryTreeNode, size int) *BinaryTreeNode {
 
     return root
 }
+
+// BuildCompleteBinaryTree builds a complete binary tree from a given array of elements 
+func BuildCompleteBinaryTree(elements []int) *BinaryTreeNode {
+    if len(elements) == 0 {
+        return nil
+    }
+
+    var buildTree func(int) *BinaryTreeNode
+    buildTree = func(index int) *BinaryTreeNode {
+        if index >= len(elements) {
+            return nil
+        }
+        return &BinaryTreeNode{
+            Key:   elements[index],
+            Left:  buildTree(2*index + 1),
+            Right: buildTree(2*index + 2),
+        }
+    }
+
+    return buildTree(0)
+}
