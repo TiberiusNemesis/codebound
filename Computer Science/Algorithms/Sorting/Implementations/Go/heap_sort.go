@@ -116,15 +116,11 @@ func HeapSort(tree *ds.BinaryTree) []int {
     size := tree.Size()
     sortedArr := make([]int, size)
 
+    BuildMaxHeap(tree.Root)
+
     for i := 0; i < size; i++ {
-        // The root of the heap is the current largest element.
         sortedArr[size - 1 - i] = tree.Root.Key
-
-        // Remove the root and re-heapify the remaining tree.
         DeleteRoot(tree)
-
-        // Rebuild the heap from the modified tree.
-        BuildMaxHeap(tree.Root)
     }
 
     return sortedArr
@@ -158,40 +154,4 @@ func InorderTraversal(node *ds.BinaryTreeNode) {
     InorderTraversal(node.Left)
     fmt.Printf("%d ", node.Key)
     InorderTraversal(node.Right)
-}
-
-func main() {
-    tree := &ds.BinaryTree{
-        Root: &ds.BinaryTreeNode{
-            Key: 2,
-            Left: &ds.BinaryTreeNode{
-                Key: 8,
-                Left: &ds.BinaryTreeNode{
-                    Key: 3,
-                },
-                Right: &ds.BinaryTreeNode{
-                    Key: 9,
-                },
-            },
-            Right: &ds.BinaryTreeNode{
-                Key: 5,
-                Left: &ds.BinaryTreeNode{
-                    Key: 1,
-                },
-            },
-        },
-    }
-
-    fmt.Println("Original Tree (Inorder Traversal):")
-    InorderTraversal(tree.Root)
-    fmt.Println()
-
-    BuildMaxHeap(tree.Root)
-
-    fmt.Println("Max-Heap (Inorder Traversal after BuildMaxHeap):")
-    InorderTraversal(tree.Root)
-    fmt.Println()
-
-    arr := HeapSort(tree)
-    fmt.Print("Sorted array: ", arr)
 }
