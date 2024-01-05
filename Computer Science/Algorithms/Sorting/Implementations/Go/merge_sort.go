@@ -14,23 +14,20 @@ func mergeSort(arr []int) []int {
 
 func merge(left, right []int) []int {
 	result := make([]int, 0, len(left) + len(right))
+	l, r := 0, 0
 
-	for len(left) > 0 || len(right) > 0 {
-		if len(left) == 0 {
-			return append(result, right...)
-		}
-		if len(right) == 0 {
-			return append(result, left...)
-		}
-
-		if left[0] <= right[0] {
-			result = append(result, left[0])
-			left = left[1:]
+	for l < len(left) && r < len(right) {
+		if left[l] <= right[r] {
+			result = append(result, left[l])
+			l++
 		} else {
-			result = append(result, right[0])
-			right = right[1:]
+			result = append(result, right[r])
+			r++
 		}
 	}
+
+	result = append(result, left[l:]...)
+	result = append(result, right[r:]...)
 
 	return result
 }
