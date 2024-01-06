@@ -8,7 +8,7 @@ First, we must convert the input [array](Computer%20Science/Data%20Structures/ar
 
 Afterward, we will have the largest (or smallest) element at the root of the [heap](Computer%20Science/Data%20Structures/heap.md). We then remove the root element (i.e. swap it with the last element of the [heap](Computer%20Science/Data%20Structures/heap.md)) and reduce the size of our [heap](Computer%20Science/Data%20Structures/heap.md) by one. Finally, we heapify the root of the [tree](Computer%20Science/Data%20Structures/tree.md) again and repeat this process until all elements are sorted.
 
-This [algorithm](Computer%20Science/Algorithms/algorithm.md) has a time complexity of O(n log n), i.e. logarithmic runtime,  and since it is an in-place [algorithm](Computer%20Science/Algorithms/algorithm.md) (i.e. no extra space for data storage besides the original list is required), we can say it has a space complexity of O(1).
+This [algorithm](Computer%20Science/Algorithms/algorithm.md) has a time complexity of O(n log n), i.e. [logarithmic runtime](Computer%20Science/Asymptotic%20Notation/Common%20Runtimes/logarithmic%20runtime.md),  and since it is an in-place [algorithm](Computer%20Science/Algorithms/algorithm.md) (i.e. no extra space for data storage besides the original list is required), we can say it has a space complexity of O(1).
 
 ## Sources
 
