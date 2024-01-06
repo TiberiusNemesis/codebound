@@ -4,6 +4,8 @@ Similar to [selection sort](Computer%20Science/Algorithms/Sorting/selection%20so
 
 Therefore, with each pass, the sorted portion gets "rebuilt" with more elements being inserted at the correct position.
 
+This algorithm has a worst-case and average-case scenario of O(n²), i.e. quadratic runtime. It does perform quite well on small datasets or nearly-sorted arrays, however.
+
 ## Sources
 
 - [Insertion sort in 2 minutes](https://www.youtube.com/watch?v=JU767SDMDvA)

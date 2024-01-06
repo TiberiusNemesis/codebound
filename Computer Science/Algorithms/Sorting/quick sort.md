@@ -6,7 +6,7 @@ In quick sort, we select an element (called the _pivot_) from the array, then pa
 
 This is an example of a classic _divide and conquer_ algorithm, which breaks down a single problem into smaller, easier to handle subproblems, then forms the bigger solution from the solved parts.
 
-The best (and average) case scenario is O(n log n). The worst-case is O(n²), and occurs when the pivot is the smallest or the largest element of the list, which leads to very unbalanced partitions.
+The best (and average) case scenario is O(n log n). The worst-case is O(n²), and occurs when the pivot is the smallest or the largest element of the list, which leads to very unbalanced partitions. We can _technically_ consider this algorithm as having logarithmic complexity (with respect to the input size of the array).
 
 An interesting advantage is that this algorithm is highly optimizable; when we apply a strategy for pivot selection and partitioning, we can significantly improve the performance of this already quite efficient sorting method.
 
