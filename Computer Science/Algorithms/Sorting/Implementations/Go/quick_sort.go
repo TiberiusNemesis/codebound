@@ -32,22 +32,16 @@ func partition(arr []int, start, end, pivotIndex int) int {
 }
 
 
-func medianOfThree(arr []int, a, b, c int) int {
-    if arr[a] < arr[b] {
-        if arr[b] < arr[c] {
-            return arr[b]
-        } else if arr[a] < arr[c] {
-            return arr[c]
-        } else {
-            return arr[a]
-        }
+func medianOfThree(arr []int, firstIndex, middleIndex, lastIndex int) int {
+    first := arr[firstIndex]
+    middle := arr[middleIndex]
+    last := arr[lastIndex]
+
+    if (first < middle) != (first < last) {
+        return firstIndex
+    } else if (middle < first) != (middle < last) {
+        return middleIndex
     } else {
-        if arr[a] < arr[c] {
-            return arr[a]
-        } else if arr[b] < arr[c] {
-            return arr[c]
-        } else {
-            return arr[b]
-        }
+        return lastIndex
     }
 }
