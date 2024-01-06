@@ -4,11 +4,10 @@ func QuickSort(arr []int) []int {
     if len(arr) < 2 {
         return arr
     }
-	
+
+    pivot := medianOfThree(arr, 0, len(arr)/2, len(arr)-1)
+
     left, right := 0, len(arr)-1
-
-    pivot := arr[len(arr)/2]
-
     for left <= right {
         for arr[left] < pivot {
             left++
@@ -31,4 +30,24 @@ func QuickSort(arr []int) []int {
     }
 
     return arr
+}
+
+func medianOfThree(arr []int, a, b, c int) int {
+    if arr[a] < arr[b] {
+        if arr[b] < arr[c] {
+            return arr[b]
+        } else if arr[a] < arr[c] {
+            return arr[c]
+        } else {
+            return arr[a]
+        }
+    } else {
+        if arr[a] < arr[c] {
+            return arr[a]
+        } else if arr[b] < arr[c] {
+            return arr[c]
+        } else {
+            return arr[b]
+        }
+    }
 }
