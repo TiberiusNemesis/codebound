@@ -4,7 +4,7 @@ Similar to [selection sort](Computer%20Science/Algorithms/Sorting/selection%20so
 
 Therefore, with each pass, the sorted portion gets "rebuilt" with more elements being inserted at the correct position.
 
-This algorithm has a worst-case and average-case scenario of O(n²), i.e. quadratic runtime. It does perform quite well on small datasets or nearly-sorted arrays, however.
+This [algorithm](Computer%20Science/Algorithms/algorithm.md) has a worst-case and average-case scenario of O(n²), i.e. quadratic aka [logarithmic runtime](Computer%20Science/Asymptotic%20Notation/Common%20Runtimes/logarithmic%20runtime.md). It does perform quite well on small datasets or nearly-sorted arrays, however.
 
 ## Sources
 
