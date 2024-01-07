@@ -11,7 +11,7 @@ def fibonacci(i):
     return fibonacci(i - 1) + fibonacci(i - 2)  
 ```
 
-Building a recursive algorithm requires three main steps to be defined:
+Building a recursive [algorithm](Computer%20Science/Algorithms/algorithm.md) requires three main steps to be defined:
 
 1. A base case, i.e. when to stop looping/making recursive calls
 2. Step(s) toward the base case
@@ -61,9 +61,9 @@ def nested_recursion(n):
         return nested_recursion(nested_recursion(n-1))
 ```
 
-Two other important types to be distinguished are the tail recursion and the non-tail recursion.
+Two other important types to be distinguished are the [tail recursion](Computer%20Science/Algorithms/Recursion/tail%20recursion.md) and the [non-tail recursion](Computer%20Science/Algorithms/Recursion/non-tail%20recursion.md).
 
-A common disadvantage of recursion is that it may lead to high memory usage due to extensive or multiple call stacks for each call (especially in non-tail recursion). They may also be less efficient than iterative solutions in problems that are not so easily broken down. Finally, in scenarios where proper termination (i.e. a base case) is lacking, we can encounter infinite recursion scenarios, resulting in a stack overflow error.
+A common disadvantage of recursion is that it may lead to high memory usage due to extensive or multiple call stacks for each call (especially in [non-tail recursion](Computer%20Science/Algorithms/Recursion/non-tail%20recursion.md)). They may also be less efficient than iterative solutions in problems that are not so easily broken down. Finally, in scenarios where proper termination (i.e. a base case) is lacking, we can encounter infinite recursion scenarios, resulting in a [stack](Computer%20Science/Data%20Structures/stack.md) overflow error.
 
 ## Sources
 

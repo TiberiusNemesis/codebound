@@ -1,6 +1,6 @@
 # Tail Recursion
 
-When the recursive call is the last operation in the function, we call it a tail recursion. Some languages support tail call optimization (aka TCO), which leads to tail recursive functions being as efficient as iterative loops. Here's an example of a factorial function with tail recursion:
+When the recursive call is the last operation in the function, we call it a tail [recursion](Computer%20Science/Algorithms/Recursion/recursion.md). Some languages support tail call optimization (aka TCO), which leads to tail recursive functions being as efficient as iterative loops. Here's an example of a factorial function with tail [recursion](Computer%20Science/Algorithms/Recursion/recursion.md):
 
 ```python
 def tail_factorial(x):
