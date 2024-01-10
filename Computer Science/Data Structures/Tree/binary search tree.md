@@ -4,7 +4,7 @@ A type of [binary tree](Computer%20Science/Data%20Structures/Tree/binary%20tree.
 
 ![binary-search-tree](/Assets/binary-search-tree.png)
 
-This allows us to perform the [binary search](Computer%20Science/Algorithms/Searching/binary%20search.md) [algorithm](Computer%20Science/Algorithms/algorithm.md) very efficiently; a [binary search](Computer%20Science/Algorithms/Searching/binary%20search.md) [tree](Computer%20Science/Data%20Structures/tree.md), when also a [balanced tree](Computer%20Science/Data%20Structures/balanced%20tree.md), has a time complexity of $O(log n)$ for its insert/find/delete operations (on average).
+This allows us to perform the [binary search](Computer%20Science/Algorithms/Searching/binary%20search.md) [algorithm](Computer%20Science/Algorithms/algorithm.md) very efficiently; a [binary search](Computer%20Science/Algorithms/Searching/binary%20search.md) [tree](Computer%20Science/Data%20Structures/tree.md), when also a [balanced tree](Computer%20Science/Data%20Structures/Tree/balanced%20tree.md), has a time complexity of $O(log n)$ for its insert/find/delete operations (on average).
 
 ## Operations and Time Complexity
 
