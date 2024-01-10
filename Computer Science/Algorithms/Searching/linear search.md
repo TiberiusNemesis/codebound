@@ -1,8 +1,8 @@
 # Linear Search
 
-A quite straightforward approach to searching, linear search involves going through each element of the collection until the target element is found. Logically, the worst-case scenario would be when the element is at the end of the array, and we'd have to go through the entire collection in order to find it. This would result in linear runtime, aka $O(n)$.
+A quite straightforward approach to searching, linear search involves going through each element of the collection until the target element is found. Logically, the worst-case scenario would be when the element is at the end of the [array](Computer%20Science/Data%20Structures/array.md), and we'd have to go through the entire collection in order to find it. This would result in [linear runtime](Computer%20Science/Asymptotic%20Notation/Common%20Runtimes/linear%20runtime.md), aka $O(n)$.
 
-In pseudocode, the linear search algorithm can be represented as follows:
+In pseudocode, the linear search [algorithm](Computer%20Science/Algorithms/algorithm.md) can be represented as follows:
 
 - Start with index `0`, comparing each element with the target
 - If the target is equal to the element, return its index
